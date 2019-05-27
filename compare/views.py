@@ -56,7 +56,7 @@ def codeInput(request):
             'two':results[2],
             }
 
-            return render(request, 'compare/index.html', context)
+            return render(request, 'compare/index2.html', context)
     else:
         print("lm1")
         form = CodeForm()
