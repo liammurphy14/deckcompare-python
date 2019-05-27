@@ -2,7 +2,7 @@ import base64
 #test12
 #example deck code to work with
 #deckcode = "AAECAZ8FBJ74AoPUAqcFrwQNteYC1uUC0eEC+9MClc4C48sCuMcCg8cC68IC m8IC+Qr1BUYA"
-deckcode = "AAEBAZICCMQGi68Cya8CorYCoM4Cws4Cy+wCzfQCC0DkCMuvAs+vAtCvAuKvAs6xAqDNAofOAp7SAurmAgA="
+deckcode = "AAEBAZICCMQGi68Cya8CorYCoM4Cws4Cy+wCzfQCC0DkCMuvAs+vAtCvAuKvAs6xAqDNAofOAp7SaurmAgA="
 #deckcode = input("Please enter a deck code:  ")
 
 def decode(deckcode):
