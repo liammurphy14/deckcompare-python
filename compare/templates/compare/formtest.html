@@ -1,9 +1,22 @@
-<title>Deck Compare</title>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Deck Compare | Results</title>
+  </head>
+  <body>
+    <div class="jumbotron">
+      <h3>Please input the deck codes that you would like to compare:</h3>
+      <br>
+      <h5>
+        <form action="" method="post" style="width:5000px;">
+          {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit">
+        </form>
+      </h5>
+    </div>
 
-Please input the deck codes that you would like to compare:
-<br><br>
-<form action="" method="post">
-  {% csrf_token %}
-  {{form}}
-  <input type="submit">
-</form>
+  </body>
+</html>

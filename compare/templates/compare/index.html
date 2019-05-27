@@ -1,25 +1,31 @@
-<title>Deck Compare | Results</title>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Deck Compare</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
 
-<form class="" action="index.html" method="post">
-
-</form>
-
-
-Cards in Deck 1:<br>
-<ul style="list-style: none;".
-{% for i in one %}
-    <li>{{ i }}</li>
-{% endfor %}
-</ul>
-Cards in both decks:<br>
-<ul style="list-style: none;".
-{% for i in both %}
-    <li>{{ i }}</li>
-{% endfor %}
-</ul>
-Cards in Deck 2:<br>
-<ul style="list-style: none;".
-{% for i in two %}
-    <li>{{ i }}</li>
-{% endfor %}
-</ul>
+  <body>
+    <div class="jumbotron">
+      <h4>Cards in Deck 1:<br></h4>
+      <ul style="list-style: none;".
+      {% for i in one %}
+          <li>{{ i }}</li>
+      {% endfor %}
+      </ul>
+      <h4>Cards in both decks:<br></h4>
+      <ul style="list-style: none;".
+      {% for i in both %}
+          <li>{{ i }}</li>
+      {% endfor %}
+      </ul>
+      <h4>Cards in Deck 2:<br></h4>
+      <ul style="list-style: none;".
+      {% for i in two %}
+          <li>{{ i }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
