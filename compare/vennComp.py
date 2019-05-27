@@ -1,7 +1,9 @@
 import decoder
 
 def organise(deck): #function to extract card dbfIDs from decoded decklist
-
+    print("Deck:")
+    print(deck)
+    print("------")
     list1 = []
     list1.append(deck[6:6+deck[5]])
     list1.append(deck[7+deck[5]:7+deck[5]+deck[6+deck[5]]])
@@ -13,6 +15,12 @@ def organise(deck): #function to extract card dbfIDs from decoded decklist
     for i in range(len(list1[1])):
         list2.append(list1[1][i])
 
+    print("List 1:")
+    print(list1)
+    print("------")
+    print("List 2:")
+    print(list2)
+    print("------v")
     both = [list1, list2]
     return both
 
