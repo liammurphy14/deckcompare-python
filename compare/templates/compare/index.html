@@ -3,23 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>Deck Compare | Results</title>
+    {% load static %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'test.css'%}">
+
   </head>
 
-  <body>
+  <body id="bootstrap-overrides">
     <div class="container">
       <div class="row">
         <div class="col-sm">
           <h4>Cards only in Deck 1::</h4>
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush cardlists">
           {% for i in one %}
               <li class="list-group-item">
                 <div class="container">
                   <div class="row">
-                    <div class="col-sm">
+                    <div class="col cardleft">
                       {{ i.n }}x {{ i.name }}
                     </div>
-                    <div class="col-sm">
+                    <div class="col-1 cardright">
                         {{ i.cost }}
                     </div>
                   </div>
@@ -30,15 +33,15 @@
         </div>
         <div class="col-sm">
           <h4>Cards in both decks:</h4>
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush cardlists">
           {% for i in both %}
               <li class="list-group-item">
                 <div class="container">
                   <div class="row">
-                    <div class="col-sm">
+                    <div class="col cardleft">
                       {{ i.n }}x {{ i.name }}
                     </div>
-                    <div class="col-sm">
+                    <div class="col-1 cardright">
                         {{ i.cost }}
                     </div>
                   </div>
@@ -49,15 +52,15 @@
         </div>
         <div class="col-sm">
           <h4>Cards only in Deck 2:</h4>
-          <ul class="list-group list-group-flush">
+          <ul class="list-group list-group-flush cardlists">
           {% for i in two %}
               <li class="list-group-item">
                 <div class="container">
                   <div class="row">
-                    <div class="col-sm">
+                    <div class="col cardleft">
                       {{ i.n }}x {{ i.name }}
                     </div>
-                    <div class="col-sm">
+                    <div class="col-1 cardright">
                         {{ i.cost }}
                     </div>
                   </div>
