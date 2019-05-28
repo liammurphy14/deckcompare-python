@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from .newCompare import *
+from .newCompare import compare
 from .forms import CodeForm
 # Create your views here.
 
@@ -63,4 +63,24 @@ def codeInput(request):
     return render(request, 'compare/formtest.html', {'form': form})
 
 def testPage(request):
-    return render(request, 'compare/testpage.html')
+    if request.method == 'POST':
+        print("lm2")
+        form = CodeForm(request.POST)
+        if form.is_valid():
+            code1 = form.cleaned_data['deckCode1']
+            code2 = form.cleaned_data['deckCode2']
+            results = compare(code1,code2)
+
+
+            print("lm3")
+            context = {
+            'one':results[0],
+            'both':results[1],
+            'two':results[2],
+            }
+
+            return render(request, 'compare/index.html', context)
+    else:
+        print("lm1")
+        form = CodeForm()
+    return render(request, 'compare/formtest.html', {'form': form})

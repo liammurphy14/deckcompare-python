@@ -48,6 +48,16 @@ def getName(n,dbfId,cardData):
     cardName = cardData[str(dbfId)]['name']
     return(mult + cardName)
 
+def cardDetails(n,dbfId,cardData):
+    name = cardData[str(dbfId)]['name']
+    cost = cardData[str(dbfId)]['cost']
+
+    return {
+    'name':name,
+    'cost':cost,
+    'n':n
+    }
+
 def compare(code1,code2):
 
     decoded1 = decode(code1)
@@ -84,36 +94,36 @@ def compare(code1,code2):
             else:
                 cases['0/0'].append(i)
 
-    with open('/var/www/deckcompare/cardData', 'r') as f:
+    with open('cardData', 'r') as f:
         cardData = json.load(f)
 
     output = [[],[],[]]
 
     #BUILD DECK 1
     for i in cases['2/0']:
-        output[0].append(getName(2, i, cardData))
+        output[0].append(cardDetails(2, i, cardData))
     for i in cases['2/1']:
-        output[0].append(getName(1, i, cardData))
+        output[0].append(cardDetails(1, i, cardData))
     for i in cases['1/0']:
-        output[0].append(getName(1, i, cardData))
+        output[0].append(cardDetails(1, i, cardData))
 
     #BUILD CROSSOVER
     for i in cases['2/2']:
-        output[1].append(getName(2, i, cardData))
+        output[1].append(cardDetails(2, i, cardData))
     for i in cases['1/1']:
-        output[1].append(getName(1, i, cardData))
+        output[1].append(cardDetails(1, i, cardData))
     for i in cases['2/1']:
-        output[1].append(getName(1, i, cardData))
+        output[1].append(cardDetails(1, i, cardData))
     for i in cases['1/2']:
-        output[1].append(getName(1, i, cardData))
+        output[1].append(cardDetails(1, i, cardData))
 
     #BUILD DECK 2
     for i in cases['0/2']:
-        output[2].append(getName(2, i, cardData))
+        output[2].append(cardDetails(2, i, cardData))
     for i in cases['1/2']:
-        output[2].append(getName(1, i, cardData))
+        output[2].append(cardDetails(1, i, cardData))
     for i in cases['0/1']:
-        output[2].append(getName(1, i, cardData))
+        output[2].append(cardDetails(1, i, cardData))
 
 
     '''print('DECK COMPARISON RESULT:')
