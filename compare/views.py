@@ -56,11 +56,11 @@ def codeInput(request):
             'two':results[2],
             }
 
-            return render(request, 'compare/index2.html', context)
+            return render(request, 'compare/index.html', context)
     else:
         print("lm1")
         form = CodeForm()
     return render(request, 'compare/formtest.html', {'form': form})
 
-def thanks(request):
-    return render(request, 'compare/thanks.html')
+def testPage(request):
+    return render(request, 'compare/testpage.html')
