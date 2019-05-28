@@ -94,7 +94,8 @@ def compare(code1,code2):
             else:
                 cases['0/0'].append(i)
 
-    with open('cardData', 'r') as f:
+    with open('/var/www/deckcompare/cardData', 'r') as f:
+        #changepath
         cardData = json.load(f)
 
     output = [[],[],[]]
