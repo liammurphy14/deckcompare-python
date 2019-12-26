@@ -1,5 +1,7 @@
 from vennComp import compare
+import jsonConvert
 import json
+
 
 deckA = "AAECAaoICP4Figfv9wKZ+wLLhQPFmQPjtAPTwAMLnAKBBP8Fsgaw8ALPpQO3rQO5rQP+rgOqrwPQrwMA"
 deckB = "AAECAaoICpQD/gWKB+/3Apn7AsuFA8WZA9aZA+O0A9PAAwr/BbIGsPACjIUDtJcDt60Dua0D/q4Dqq8D0K8DAA=="
@@ -12,9 +14,14 @@ with open('cardData', 'r') as f:
 
 def printNames(list):
     for i in range(2):
-        for j in range(len(list[i])):
-            cardName = cardList[str(list[i][j])]['name']
-            print(str(i+1) + "x " + cardName)
+        try:
+            for j in range(len(list[i])):
+                cardName = cardList[str(list[i][j])]['name']
+                print(str(i+1) + "x " + cardName)
+        except:
+            jsonConvert.build()
+            print("Try again faggot")
+
 
 print("---------------------")
 print("Cards only in Deck 1:")
