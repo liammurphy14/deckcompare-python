@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.template import loader
 from django.http import HttpResponse, HttpResponseRedirect
-from .newCompare import compare
 from .forms import CodeForm
+from .vennComp import compare
 # Create your views here.
 
 def index(request):
@@ -48,7 +48,7 @@ def codeInput(request):
         if form.is_valid():
             code1 = form.cleaned_data['deckCode1']
             code2 = form.cleaned_data['deckCode2']
-            venn = vennComp(code1,code2)
+            venn = compare(code1,code2)
             print("lm3")
             with open('/var/www/deckcompare/cardData', 'r') as f:
                 cardData = json.load(f)
