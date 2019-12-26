@@ -1,90 +1,81 @@
 import decoder
 
-def organise(deck): #function to extract card dbfIDs from decoded decklist
-    print("Deck:")
-    print(deck)
-    print("------")
-    list1 = []
-    list1.append(deck[6:6+deck[5]])
-    list1.append(deck[7+deck[5]:7+deck[5]+deck[6+deck[5]]])
+def deckListBuilder(deckcode):
+    #turns deckcode into list of singles and doubles
+    deck = decoder.decode(deckcode)
 
-    list2 = []
-    for i in range(len(list1[0])):
-        list2.append(list1[0][i])
+    singles = deck[6:6+deck[5]]
+    doubles = deck[7+deck[5]:7+deck[5]+deck[6+deck[5]]]
+    cardList = [singles,doubles]
 
-    for i in range(len(list1[1])):
-        list2.append(list1[1][i])
+    return cardList
 
-    print("List 1:")
-    print(list1)
-    print("------")
-    print("List 2:")
-    print(list2)
-    print("------v")
-    both = [list1, list2]
-    return both
+def getAllCards(cardLists):
+    #returns list of all unique cards across both decks for iteration
+    decks = []
+    for card in cardLists:
+        if card not in decks:
+            decks.append(card)
+    return decks
 
-def checkDoubles(inDeck, list1):
-    for i in range(len(inDeck)):
-        if inDeck[i] in list1[1]:
-            inDeck.append(inDeck[i])
 
-def compare(deckOne, deckTwo):
+def compare(deckcodeA, deckcodeB):
 
     #runs decoder function to end up with list of IDs
-    deckOne = decoder.decode(deckOne)
-    deckTwo = decoder.decode(deckTwo)
+    deckA = deckListBuilder(deckcodeA)
+    deckB = deckListBuilder(deckcodeB)
 
-    #organise(deckOne)
-    #organise(deckTwo)
+    decks = getAllCards(deckA[0] + deckA[1] + deckB[0] + deckB[1])
+    inA = [[],[]]
+    inB = [[],[]]
+    inBoth = [[],[]]
+    #print(decks)
+    for card in decks:
+        if card in deckA[0]:
+            if card in deckB[0]:
+                #1 in each deck
+                inBoth[0].append(card)
 
-    deckOneBoth = organise(deckOne)
-    deckTwoBoth = organise(deckTwo)
+            elif card in deckB[1]:
+                #1 in A, 2 in B
+                inBoth[0].append(card)
+                inB[0].append(card)
 
-    # deckXA two lists of single and double cards deckXB list of all cards
-    deckOneA = deckOneBoth[0]
-    deckOneB = deckOneBoth[1]
+            else:
+                #1 in A
+                inA[0].append(card)
 
-    deckTwoA = deckTwoBoth[0]
-    deckTwoB = deckTwoBoth[1]
+        elif card in deckA[1]:
+            if card in deckB[0]:
+                #2 in A, 1 in B
+                inA[0].append(card)
+                inBoth[0].append(card)
 
-    # Turn list2 into sets and compare and then turn the output back into a list
-    inOne = list(set(deckOneB) - set(deckTwoB))
-    inTwo = list(set(deckTwoB) - set(deckOneB))
+            elif card in deckB[1]:
+                #2 in each deck
+                inBoth[1].append(card)
 
+            else:
+                #2 in A
+                inA[1].append(card)
 
-
-
-    checkDoubles(inOne, deckOneA)
-    checkDoubles(inTwo, deckTwoA)
-
-    inBoth = []
-
-
-    inCommon = list(set(deckOneB) & set(deckTwoB))
-    #print(inCommon)
-
-    for i in range(len(inCommon)):
-        # if both cards are singles
-        if inCommon[i] in deckOneA[0] and inCommon[i] in deckTwoA[0]:
-            inBoth.append(inCommon[i])
-        # if single in deck1 but double in deck2
-        elif inCommon[i] in deckOneA[0] and inCommon[i] not in deckTwoA[0]:
-            inBoth.append(inCommon[i])
-            inTwo.append(inCommon[i])
-        # if double in deck1 but single in deck2
-        elif inCommon[i] not in deckOneA[0] and inCommon[i] in deckTwoA[0]:
-            inBoth.append(inCommon[i])
-            inOne.append(inCommon[i])
-        # if double in both
-        elif inCommon[i] in deckOneA[1] and inCommon[i] in deckTwoA[1]:
-            inBoth.append(inCommon[i])
-            inBoth.append(inCommon[i])
         else:
-            print("Check for card in set went wrong")
+            if card in deckB[0]:
+                #1 in B
+                inB[0].append(card)
+
+            elif card in deckB[1]:
+                #2 in B
+                inB[1].append(card)
+
+            else:
+                raise Exception("You shouldn't be here. Card: " + str(card))
 
 
-    return[inOne, inBoth, inTwo]
+
+
+
+    return [inA, inBoth, inB]
 
 #Example Usage:
 

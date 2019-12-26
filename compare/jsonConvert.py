@@ -3,7 +3,7 @@
 import requests
 import json
 
-url = 'https://api.hearthstonejson.com/v1/31022/enUS/cards.collectible.json'
+url = 'https://api.hearthstonejson.com/v1/latest/enUS/cards.collectible.json'
 
 json_data = requests.get(url).json()
 
@@ -20,5 +20,5 @@ def build():
 #print(json_data)
 build()
 
-with open('../cardData', 'w') as f:
+with open('cardData', 'w') as f:
     json.dump(tidyDict, f)
