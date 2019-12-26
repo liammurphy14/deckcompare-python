@@ -48,12 +48,24 @@ def codeInput(request):
         if form.is_valid():
             code1 = form.cleaned_data['deckCode1']
             code2 = form.cleaned_data['deckCode2']
-            results = compare(code1,code2)
+            venn = vennComp(code1,code2)
             print("lm3")
+            with open('/var/www/deckcompare/cardData', 'r') as f:
+                cardData = json.load(f)
+            def getNames(list):
+                names = []
+                for i in range(2):
+                    try:
+                        for j in range(len(list[i])):
+                            cardName = cardList[str(list[i][j])]['name']
+                            names.append(str(i+1) + "x " + cardName)
+                    except:
+                        jsonConvert.build()
+
             context = {
-            'one':results[0],
-            'both':results[1],
-            'two':results[2],
+            'one':getNames(venn[0]),
+            'both':getNames(venn[1]),
+            'two':getNames(venn[2]),
             }
 
             return render(request, 'compare/index.html', context)
