@@ -25,7 +25,7 @@ SECRET_KEY = 'u7%*3g)#x5wvekv7!+a^qzogzvl=#@ssiy51+g9%3r@=kmw90y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'deckcompare.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'deckcompare.com', 'www.deckcompare.com']
 
 
 # Application definition
