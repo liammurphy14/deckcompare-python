@@ -17,7 +17,7 @@ def decode(deckcode):
     for i in range(len(code)):
         binCode.append(format(code[i], "08b"))
 
-    #decode dem varints
+    #Convert varint to dbfID
     final = []
 
     i = 0

@@ -20,7 +20,6 @@ def getAllCards(cardLists):
 
 
 def compare(deckcodeA, deckcodeB):
-
     #runs decoder function to end up with list of IDs
     deckA = deckListBuilder(deckcodeA)
     deckB = deckListBuilder(deckcodeB)
@@ -29,7 +28,7 @@ def compare(deckcodeA, deckcodeB):
     inA = [[],[]]
     inB = [[],[]]
     inBoth = [[],[]]
-    #print(decks)
+    #Sort cards into lists of only in deckA, only in deckB or in both decks
     for card in decks:
         if card in deckA[0]:
             if card in deckB[0]:
@@ -70,10 +69,6 @@ def compare(deckcodeA, deckcodeB):
 
             else:
                 raise Exception("You shouldn't be here. Card: " + str(card))
-
-
-
-
 
     return [inA, inBoth, inB]
 
