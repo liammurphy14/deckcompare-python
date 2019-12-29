@@ -4,10 +4,8 @@ import json
 deckA = "AAECAaoICP4Figfv9wKZ+wLLhQPFmQPjtAPTwAMLnAKBBP8Fsgaw8ALPpQO3rQO5rQP+rgOqrwPQrwMA"
 deckB = "AAECAaoICpQD/gWKB+/3Apn7AsuFA8WZA9aZA+O0A9PAAwr/BbIGsPACjIUDtJcDt60Dua0D/q4Dqq8D0K8DAA=="
 venn = compare(deckA, deckB)
-#print(venn)
 
 with open('cardData', 'r') as f:
-    #cardList is a dictionary of dictionaries
     cardList = json.load(f)
 
 def printNames(list):
