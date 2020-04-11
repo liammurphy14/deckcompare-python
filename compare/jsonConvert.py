@@ -20,5 +20,5 @@ def build():
 #print(json_data)
 build()
 
-with open('cardData', 'w') as f:
+with open('../cardData', 'w') as f:
     json.dump(tidyDict, f)
